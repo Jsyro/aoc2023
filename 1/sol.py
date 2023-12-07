@@ -5,11 +5,7 @@ lines = open(f"{folder_path}/input.txt").readlines()
 
 print(f"# of lines:{len(lines)}")
 
-# PART 1
-
-result = 0
-
-for line in lines:
+def get_2_digit_num(line):
     first_digit = ''
     last_digit = ''
     for char in line:
@@ -18,7 +14,14 @@ for line in lines:
         if char.isdigit():
             last_digit = char
     number = int(first_digit+last_digit)
-    result += number
+    return number
+
+# PART 1
+
+result = 0
+
+for line in lines:
+    result += get_2_digit_num(line)
 
 print(f"Part 1 result:{result}")
 
@@ -36,7 +39,10 @@ num_to_int = {
     "nine": 9,
     "zero": 0,
 }
+result = 0
 
-for line in lines[:10]:
-    digit_strings = {val:line.find(st) for st,val in num_to_int.items() if line.find(st) != -1}
-    print(digit_strings)
+for line in lines[:10]:    
+    for string,val in num_to_int.items():
+        line = line.replace(string, str(val))
+    result += get_2_digit_num(line)
+print(f"Part 2 result:{result}")
