@@ -28,27 +28,23 @@ print(f"Part 1 result: {result}")
 # PART 2
 
 num_to_int = {
-    "nine": 9,
-    "eight": 8,
-    "seven": 7,
-    "six": 6,
-    "five": 5,
-    "four": 4,
-    "three": 3,
-    "two": 2,
-    "one": 1,
-    "zero": 0,
+    "nine": "n9e",
+    "eight": "e8t",
+    "seven": "7n",
+    "six": "6",
+    "five": "5e",
+    "four": "4",
+    "three": "t3",
+    "two": "t2o",
+    "one": "o1e",
 }
 result = 0
 
 # this can't handle the substrings `twone` and `nineight`
 
 for line in lines:    
-    # print(line)
-    for string,val in num_to_int.items():
-        line = line.replace(string, str(val))
-    # print(line)
+    for string, digit in num_to_int.items():
+        line = line.replace(string, digit)
     number = get_2_digit_num(line)
-    # print(number)
     result += number
 print(f"Part 2 result: {result}")
